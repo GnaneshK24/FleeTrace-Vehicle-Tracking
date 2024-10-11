@@ -10,11 +10,13 @@ export default makeStyles((theme) => ({
   },
   container: {
     marginTop: theme.spacing(2),
+    borderRadius:'20px',
   },
   buttons: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     display: 'flex',
+    borderRadius:'20px',
     justifyContent: 'space-evenly',
     '& > *': {
       flexBasis: '33%',
@@ -25,9 +27,13 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     gap: theme.spacing(2),
     paddingBottom: theme.spacing(3),
+    borderRadius:'30px',
   },
   verticalActions: {
     display: 'flex',
     flexDirection: 'column',
   },
+  Accordion:{
+    borderRadius:'50px'
+  }
 }));

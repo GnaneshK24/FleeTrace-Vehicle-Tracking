@@ -76,7 +76,7 @@ const AccumulatorsPage = () => {
                 type="number"
                 value={distanceFromMeters(item.totalDistance, distanceUnit)}
                 onChange={(event) => setItem({ ...item, totalDistance: distanceToMeters(Number(event.target.value), distanceUnit) })}
-                label={`${t('deviceTotalDistance')} (${distanceUnitString(distanceUnit, t)})`}
+                label={`${t('')} (${distanceUnitString(distanceUnit, t)})`}
               />
             </AccordionDetails>
           </Accordion>

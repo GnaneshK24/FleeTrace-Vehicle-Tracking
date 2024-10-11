@@ -19,11 +19,8 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import CloseIcon from '@mui/icons-material/Close';
 import ReplayIcon from '@mui/icons-material/Replay';
-import PublishIcon from '@mui/icons-material/Publish';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import PendingIcon from '@mui/icons-material/Pending';
-
 import { useTranslation } from './LocalizationProvider';
 import RemoveDialog from './RemoveDialog';
 import PositionValue from './PositionValue';
@@ -37,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     pointerEvents: 'auto',
     width: theme.dimensions.popupMaxWidth,
+    borderRadius:'20px',
   },
   media: {
     height: theme.dimensions.popupImageHeight,
@@ -78,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   root: ({ desktopPadding }) => ({
+    borderRadius:'60px',
     pointerEvents: 'none',
     position: 'fixed',
     zIndex: 5,
@@ -124,7 +123,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
   const deviceImage = device?.attributes?.deviceImage;
 
   const positionAttributes = usePositionAttributes(t);
-  const positionItems = useAttributePreference('positionItems', 'fixTime,address,speed,totalDistance');
+  const positionItems = useAttributePreference('positionItems', 'fixTime,address');
 
   const navigationAppLink = useAttributePreference('navigationAppLink');
   const navigationAppTitle = useAttributePreference('navigationAppTitle');
@@ -178,7 +177,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
           <Draggable
             handle={`.${classes.media}, .${classes.header}`}
           >
-            <Card elevation={3} className={classes.card}>
+            <Card elevation={0} className={classes.card}>
               {deviceImage ? (
                 <CardMedia
                   className={classes.media}
@@ -218,7 +217,6 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                             <PositionValue
                               position={position}
                               property={position.hasOwnProperty(key) ? key : null}
-                              attribute={position.hasOwnProperty(key) ? null : key}
                             />
                           )}
                         />
@@ -229,23 +227,10 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
               )}
               <CardActions classes={{ root: classes.actions }} disableSpacing>
                 <IconButton
-                  color="secondary"
-                  onClick={(e) => setAnchorEl(e.currentTarget)}
-                  disabled={!position}
-                >
-                  <PendingIcon />
-                </IconButton>
-                <IconButton
                   onClick={() => navigate('/replay')}
                   disabled={disableActions || !position}
                 >
                   <ReplayIcon />
-                </IconButton>
-                <IconButton
-                  onClick={() => navigate(`/settings/device/${deviceId}/command`)}
-                  disabled={disableActions}
-                >
-                  <PublishIcon />
                 </IconButton>
                 <IconButton
                   onClick={() => navigate(`/settings/device/${deviceId}`)}

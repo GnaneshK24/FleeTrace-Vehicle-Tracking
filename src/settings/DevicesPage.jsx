@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import {
   Table, TableRow, TableCell, TableHead, TableBody, Button, TableFooter, FormControlLabel, Switch,
 } from '@mui/material';
-import LinkIcon from '@mui/icons-material/Link';
 import { useEffectAsync } from '../reactHelper';
 import { useTranslation } from '../common/components/LocalizationProvider';
 import PageLayout from '../common/components/PageLayout';
@@ -13,17 +10,14 @@ import CollectionFab from './components/CollectionFab';
 import CollectionActions from './components/CollectionActions';
 import TableShimmer from '../common/components/TableShimmer';
 import SearchHeader, { filterByKeyword } from './components/SearchHeader';
-import { formatTime } from '../common/util/formatter';
 import { useDeviceReadonly, useManager } from '../common/util/permissions';
 import useSettingsStyles from './common/useSettingsStyles';
 import DeviceUsersValue from './components/DeviceUsersValue';
 
 const DevicesPage = () => {
   const classes = useSettingsStyles();
-  const navigate = useNavigate();
   const t = useTranslation();
 
-  const groups = useSelector((state) => state.groups.items);
 
   const manager = useManager();
   const deviceReadonly = useDeviceReadonly();
@@ -53,12 +47,6 @@ const DevicesPage = () => {
     window.location.assign('/api/reports/devices/xlsx');
   };
 
-  const actionConnections = {
-    key: 'connections',
-    title: t('sharedConnections'),
-    icon: <LinkIcon fontSize="small" />,
-    handler: (deviceId) => navigate(`/settings/device/${deviceId}/connections`),
-  };
 
   return (
     <PageLayout menu={<SettingsMenu />} breadcrumbs={['settingsTitle', 'deviceTitle']}>
@@ -68,11 +56,6 @@ const DevicesPage = () => {
           <TableRow>
             <TableCell>{t('sharedName')}</TableCell>
             <TableCell>{t('deviceIdentifier')}</TableCell>
-            <TableCell>{t('groupParent')}</TableCell>
-            <TableCell>{t('sharedPhone')}</TableCell>
-            <TableCell>{t('deviceModel')}</TableCell>
-            <TableCell>{t('deviceContact')}</TableCell>
-            <TableCell>{t('userExpirationTime')}</TableCell>
             {manager && <TableCell>{t('settingsUsers')}</TableCell>}
             <TableCell className={classes.columnAction} />
           </TableRow>
@@ -82,11 +65,6 @@ const DevicesPage = () => {
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.uniqueId}</TableCell>
-              <TableCell>{item.groupId ? groups[item.groupId]?.name : null}</TableCell>
-              <TableCell>{item.phone}</TableCell>
-              <TableCell>{item.model}</TableCell>
-              <TableCell>{item.contact}</TableCell>
-              <TableCell>{formatTime(item.expirationTime, 'date')}</TableCell>
               {manager && <TableCell><DeviceUsersValue deviceId={item.id} /></TableCell>}
               <TableCell className={classes.columnAction} padding="none">
                 <CollectionActions
@@ -94,7 +72,7 @@ const DevicesPage = () => {
                   editPath="/settings/device"
                   endpoint="devices"
                   setTimestamp={setTimestamp}
-                  customActions={[actionConnections]}
+                  
                   readonly={deviceReadonly}
                 />
               </TableCell>

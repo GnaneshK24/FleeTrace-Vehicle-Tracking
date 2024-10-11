@@ -15,13 +15,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     background: theme.palette.primary.main,
     paddingBottom: theme.spacing(5),
-    width: theme.dimensions.sidebarWidth,
-    [theme.breakpoints.down('lg')]: {
-      width: theme.dimensions.sidebarWidthTablet,
-    },
-    [theme.breakpoints.down('sm')]: {
-      width: '0px',
-    },
+    width:'50%',
+    
+    
   },
   paper: {
     display: 'flex',
@@ -38,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(52),
     padding: theme.spacing(5),
     width: '100%',
+    marginLeft:'100px'
   },
 }));
 

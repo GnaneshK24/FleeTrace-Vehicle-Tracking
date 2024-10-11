@@ -16,6 +16,7 @@ import useFilter from './useFilter';
 import MainToolbar from './MainToolbar';
 import MainMap from './MainMap';
 import { useAttributePreference } from '../common/util/preferences';
+import Draggable from 'react-draggable';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
-      position: 'fixed',
+      position: 'absolute',
       left: 0,
-      top: 0,
-      height: `calc(100% - ${theme.spacing(3)})`,
+      top: 150,
+      height: `calc(100% - ${theme.spacing(50)})`,
       width: theme.dimensions.drawerWidthDesktop,
-      margin: theme.spacing(1.5),
+      margin: theme.spacing(5),
       zIndex: 3,
     },
     [theme.breakpoints.down('md')]: {
@@ -42,23 +43,29 @@ const useStyles = makeStyles((theme) => ({
   header: {
     pointerEvents: 'auto',
     zIndex: 6,
+    borderRadius:'10px'
   },
   footer: {
     pointerEvents: 'auto',
     zIndex: 5,
+    marginTop:'700px',
+    borderRadius:'30px'
   },
   middle: {
     flex: 1,
     display: 'grid',
+    
   },
   contentMap: {
     pointerEvents: 'auto',
     gridArea: '1 / 1',
+    
   },
   contentList: {
     pointerEvents: 'auto',
     gridArea: '1 / 1',
     zIndex: 4,
+    
   },
 }));
 
@@ -108,7 +115,9 @@ const MainPage = () => {
           onEventsClick={onEventsClick}
         />
       )}
+      <Draggable>
       <div className={classes.sidebar}>
+        
         <Paper square elevation={3} className={classes.header}>
           <MainToolbar
             filteredDevices={filteredDevices}
@@ -124,6 +133,7 @@ const MainPage = () => {
             setFilterMap={setFilterMap}
           />
         </Paper>
+        
         <div className={classes.middle}>
           {!desktop && (
             <div className={classes.contentMap}>
@@ -136,14 +146,17 @@ const MainPage = () => {
           )}
           <Paper square className={classes.contentList} style={devicesOpen ? {} : { visibility: 'hidden' }}>
             <DeviceList devices={filteredDevices} />
-          </Paper>
-        </div>
-        {desktop && (
+            {desktop && (
           <div className={classes.footer}>
             <BottomMenu />
           </div>
         )}
+            
+          </Paper>
+        </div>
+
       </div>
+      </Draggable>
       <EventsDrawer open={eventsOpen} onClose={() => setEventsOpen(false)} />
       {selectedDeviceId && (
         <StatusCard

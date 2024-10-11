@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     gap: theme.spacing(1),
   },
   filterPanel: {
+    borderRadius:'30px',
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
@@ -135,19 +136,6 @@ const MainToolbar = ({
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel>{t('settingsGroups')}</InputLabel>
-            <Select
-              label={t('settingsGroups')}
-              value={filter.groups}
-              onChange={(e) => setFilter({ ...filter, groups: e.target.value })}
-              multiple
-            >
-              {Object.values(groups).sort((a, b) => a.name.localeCompare(b.name)).map((group) => (
-                <MenuItem key={group.id} value={group.id}>{group.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl>
             <InputLabel>{t('sharedSortBy')}</InputLabel>
             <Select
               label={t('sharedSortBy')}
@@ -161,10 +149,7 @@ const MainToolbar = ({
             </Select>
           </FormControl>
           <FormGroup>
-            <FormControlLabel
-              control={<Checkbox checked={filterMap} onChange={(e) => setFilterMap(e.target.checked)} />}
-              label={t('sharedFilterMap')}
-            />
+            
           </FormGroup>
         </div>
       </Popover>

@@ -159,16 +159,7 @@ const LoginPage = () => {
         )}
         {languageEnabled && (
           <FormControl>
-            <Select value={language} onChange={(e) => setLanguage(e.target.value)}>
-              {languageList.map((it) => (
-                <MenuItem key={it.code} value={it.code}>
-                  <Box component="span" sx={{ mr: 1 }}>
-                    <ReactCountryFlag countryCode={it.country} svg />
-                  </Box>
-                  {it.name}
-                </MenuItem>
-              ))}
-            </Select>
+            
           </FormControl>
         )}
       </div>
@@ -178,6 +169,9 @@ const LoginPage = () => {
           required
           error={failed}
           label={t('userEmail')}
+          sx={{
+            borderRadius:'30px'
+          }}
           name="email"
           value={email}
           autoComplete="email"
@@ -188,6 +182,7 @@ const LoginPage = () => {
         <TextField
           required
           error={failed}
+          sx={{borderRadius:'30px'}}
           label={t('userPassword')}
           name="password"
           value={password}
@@ -210,6 +205,7 @@ const LoginPage = () => {
         <Button
           onClick={handlePasswordLogin}
           type="submit"
+          sx={{borderRadius:'30px'}}
           variant="contained"
           color="secondary"
           disabled={!email || !password || (codeEnabled && !code)}

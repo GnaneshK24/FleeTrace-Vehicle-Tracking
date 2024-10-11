@@ -37,14 +37,7 @@ const DeviceConnectionsPage = () => {
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.details}>
-            <LinkField
-              endpointAll="/api/geofences"
-              endpointLinked={`/api/geofences?deviceId=${id}`}
-              baseId={id}
-              keyBase="deviceId"
-              keyLink="geofenceId"
-              label={t('sharedGeofences')}
-            />
+            
             <LinkField
               endpointAll="/api/notifications"
               endpointLinked={`/api/notifications?deviceId=${id}`}

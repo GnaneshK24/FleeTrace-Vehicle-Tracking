@@ -29,8 +29,6 @@ Ext.define('Traccar.view.dialog.DeviceAccumulators', {
     items: [{
         xtype: 'customNumberField',
         dataType: 'distance',
-        reference: 'totalDistance',
-        fieldLabel: Strings.deviceTotalDistance
     }, {
         xtype: 'customNumberField',
         dataType: 'hours',

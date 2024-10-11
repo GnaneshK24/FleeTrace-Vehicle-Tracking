@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   neutral: {
     color: theme.palette.neutral.main,
   },
+  
 }));
 
 const DeviceRow = ({ data, index, style }) => {

@@ -114,5 +114,4 @@ const PageLayout = ({ menu, breadcrumbs, children }) => {
     </div>
   );
 };
-
 export default PageLayout;

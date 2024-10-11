@@ -81,11 +81,8 @@ const BottomMenu = () => {
       case 'map':
         navigate('/');
         break;
-      case 'reports':
-        navigate('/reports/combined');
-        break;
       case 'settings':
-        navigate('/settings/preferences');
+        navigate('/settings/users');
         break;
       case 'account':
         setAnchorEl(event.currentTarget);
@@ -110,9 +107,7 @@ const BottomMenu = () => {
           )}
           value="map"
         />
-        {!disableReports && (
-          <BottomNavigationAction label={t('reportTitle')} icon={<DescriptionIcon />} value="reports" />
-        )}
+       
         <BottomNavigationAction label={t('settingsTitle')} icon={<SettingsIcon />} value="settings" />
         {readonly ? (
           <BottomNavigationAction label={t('loginLogout')} icon={<ExitToAppIcon />} value="logout" />

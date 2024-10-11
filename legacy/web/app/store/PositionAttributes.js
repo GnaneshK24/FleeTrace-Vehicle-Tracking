@@ -162,16 +162,6 @@ Ext.define('Traccar.store.PositionAttributes', {
         name: Strings.positionArchive,
         valueType: 'boolean'
     }, {
-        key: 'distance',
-        name: Strings.positionDistance,
-        valueType: 'number',
-        dataType: 'distance'
-    }, {
-        key: 'totalDistance',
-        name: Strings.deviceTotalDistance,
-        valueType: 'number',
-        dataType: 'distance'
-    }, {
         key: 'rpm',
         name: Strings.positionRpm,
         valueType: 'number'

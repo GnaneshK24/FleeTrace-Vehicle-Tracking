@@ -46,12 +46,6 @@ const UsersPage = () => {
     handler: handleLogin,
   };
 
-  const actionConnections = {
-    key: 'connections',
-    title: t('sharedConnections'),
-    icon: <LinkIcon fontSize="small" />,
-    handler: (userId) => navigate(`/settings/user/${userId}/connections`),
-  };
 
   useEffectAsync(async () => {
     setLoading(true);
@@ -76,8 +70,6 @@ const UsersPage = () => {
             <TableCell>{t('sharedName')}</TableCell>
             <TableCell>{t('userEmail')}</TableCell>
             <TableCell>{t('userAdmin')}</TableCell>
-            <TableCell>{t('sharedDisabled')}</TableCell>
-            <TableCell>{t('userExpirationTime')}</TableCell>
             <TableCell className={classes.columnAction} />
           </TableRow>
         </TableHead>
@@ -86,16 +78,13 @@ const UsersPage = () => {
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.email}</TableCell>
-              <TableCell>{formatBoolean(item.administrator, t)}</TableCell>
-              <TableCell>{formatBoolean(item.disabled, t)}</TableCell>
-              <TableCell>{formatTime(item.expirationTime, 'date')}</TableCell>
               <TableCell className={classes.columnAction} padding="none">
                 <CollectionActions
                   itemId={item.id}
                   editPath="/settings/user"
                   endpoint="users"
                   setTimestamp={setTimestamp}
-                  customActions={manager ? [actionLogin, actionConnections] : [actionConnections]}
+                  customActions={ [actionLogin]}
                 />
               </TableCell>
             </TableRow>
