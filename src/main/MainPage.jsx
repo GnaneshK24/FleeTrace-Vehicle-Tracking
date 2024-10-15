@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
-      position: 'absolute',
+      position: 'fixed',
       left: 0,
-      top: 150,
-      height: `calc(100% - ${theme.spacing(50)})`,
+      top: 0,
+      height: `calc(100% - ${theme.spacing(3)})`,
       width: theme.dimensions.drawerWidthDesktop,
-      margin: theme.spacing(5),
+      margin: theme.spacing(1.5),
       zIndex: 3,
     },
     [theme.breakpoints.down('md')]: {
@@ -43,18 +43,23 @@ const useStyles = makeStyles((theme) => ({
   header: {
     pointerEvents: 'auto',
     zIndex: 6,
-    borderRadius:'10px'
+    width:'570%',
+    alignContent:'center',
+    alignItems:'initial',
+    justifyContent:'initial',
+    justifySelf:'initial',
+    
   },
   footer: {
     pointerEvents: 'auto',
-    zIndex: 5,
-    marginTop:'700px',
-    borderRadius:'30px'
+    zIndex: 9,
+    marginLeft:'30%',
+    width:'80%'
+    
   },
   middle: {
-    flex: 1,
+    flex: 2,
     display: 'grid',
-    cursor:'-moz-grab'
     
   },
   contentMap: {
@@ -116,25 +121,21 @@ const MainPage = () => {
           onEventsClick={onEventsClick}
         />
       )}
-      <Draggable>
+      
       <div className={classes.sidebar}>
         
         <Paper square elevation={3} className={classes.header}>
+
           <MainToolbar
             filteredDevices={filteredDevices}
             devicesOpen={devicesOpen}
             setDevicesOpen={setDevicesOpen}
-            keyword={keyword}
-            setKeyword={setKeyword}
-            filter={filter}
-            setFilter={setFilter}
-            filterSort={filterSort}
-            setFilterSort={setFilterSort}
-            filterMap={filterMap}
-            setFilterMap={setFilterMap}
+            
+            
           />
+          
         </Paper>
-        
+  
         <div className={classes.middle}>
           {!desktop && (
             <div className={classes.contentMap}>
@@ -147,17 +148,12 @@ const MainPage = () => {
           )}
           <Paper square className={classes.contentList} style={devicesOpen ? {} : { visibility: 'hidden' }}>
             <DeviceList devices={filteredDevices} />
-            {desktop && (
-          <div className={classes.footer}>
-            <BottomMenu />
-          </div>
-        )}
-            
-          </Paper>
+            </Paper>
+          
         </div>
-
       </div>
-      </Draggable>
+      
+     
       {selectedDeviceId && (
         <StatusCard
           deviceId={selectedDeviceId}

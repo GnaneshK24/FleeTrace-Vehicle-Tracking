@@ -71,14 +71,6 @@ const SettingsMenu = () => {
               icon={<SmartphoneIcon />}
               selected={location.pathname.startsWith('/settings/device')}
             />
-            {!features.disableDrivers && (
-              <MenuItem
-                title={t('sharedDrivers')}
-                link="/settings/drivers"
-                icon={<PersonIcon />}
-                selected={location.pathname.startsWith('/settings/driver')}
-              />
-            )}
             {supportLink && (
               <MenuItem
                 title={t('settingsSupport')}

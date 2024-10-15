@@ -95,7 +95,7 @@ const BottomMenu = () => {
   };
 
   return (
-    <Paper square elevation={3}>
+    <Paper square elevation={3} >
       <BottomNavigation value={currentSelection()} onChange={handleSelection} showLabels>
         <BottomNavigationAction
           label={t('mapTitle')}

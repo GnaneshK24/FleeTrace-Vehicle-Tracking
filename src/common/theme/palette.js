@@ -8,7 +8,7 @@ export default (server, darkMode) => ({
     default: darkMode ? '#000' : grey[50],
   },
   primary: {
-    main: validatedColor(server?.attributes?.colorPrimary) || (darkMode ? indigo[300] : indigo[900]),
+    main: validatedColor(server?.attributes?.colorPrimary) || (darkMode ? "#536dfe" : indigo[900]),
   },
   secondary: {
     main: validatedColor(server?.attributes?.colorSecondary) || (darkMode ? indigo[300] : green[800]),

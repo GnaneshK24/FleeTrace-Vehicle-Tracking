@@ -20,14 +20,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
 import EditItemView from './components/EditItemView';
 import { useTranslation } from '../common/components/LocalizationProvider';
-import useUserAttributes from '../common/attributes/useUserAttributes';
 import { sessionActions } from '../store';
 import SettingsMenu from './components/SettingsMenu';
-import useCommonUserAttributes from '../common/attributes/useCommonUserAttributes';
 import { useAdministrator, useRestriction, useManager } from '../common/util/permissions';
 import useQuery from '../common/util/useQuery';
 import { useCatch } from '../reactHelper';
-import useMapStyles from '../map/core/useMapStyles';
 import useSettingsStyles from './common/useSettingsStyles';
 
 const UserPage = () => {

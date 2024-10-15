@@ -9,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     height: '100%',
-    background:indigo[200],
+    
+    
   },
   sidebar: {
     display: 'flex',
@@ -23,23 +24,25 @@ const useStyles = makeStyles((theme) => ({
     
   },
   paper: {
-    background:indigo[200],
+    
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 2,
     boxShadow: '-2px 0px 16px rgba(0, 0, 0, 0.25)',
-    paddingRight:'50px',
-    
+    backgroundColor:indigo[200],
+    paddingRight:'30px'
     
   },
   form: {
-    maxWidth: theme.spacing(52),
+    
+    maxWidth: theme.spacing(50),
     padding: '50px',
     width: '100%',
     marginLeft:'10px',
-    marginBottom:'200px'
+    marginBottom:'200px',
+    
   },
 }));
 

@@ -203,6 +203,7 @@ const EditAttributesAccordion = ({ attribute, attributes, setAttributes, definit
         >
           {t('sharedAdd')}
         </Button>
+  
       </AccordionDetails>
     </Accordion>
   );

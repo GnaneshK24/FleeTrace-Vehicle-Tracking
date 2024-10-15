@@ -79,27 +79,6 @@ const DevicesPage = () => {
             </TableRow>
           )) : (<TableShimmer columns={manager ? 8 : 7} endAction />)}
         </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell>
-              <Button onClick={handleExport} variant="text">{t('reportExport')}</Button>
-            </TableCell>
-            <TableCell colSpan={manager ? 8 : 7} align="right">
-              <FormControlLabel
-                control={(
-                  <Switch
-                    value={showAll}
-                    onChange={(e) => setShowAll(e.target.checked)}
-                    size="small"
-                  />
-                )}
-                label={t('notificationAlways')}
-                labelPlacement="start"
-                disabled={!manager}
-              />
-            </TableCell>
-          </TableRow>
-        </TableFooter>
       </Table>
       <CollectionFab editPath="/settings/device" />
     </PageLayout>

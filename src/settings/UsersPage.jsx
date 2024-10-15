@@ -19,7 +19,6 @@ import useSettingsStyles from './common/useSettingsStyles';
 
 const UsersPage = () => {
   const classes = useSettingsStyles();
-  const navigate = useNavigate();
   const t = useTranslation();
 
   const manager = useManager();
@@ -90,23 +89,6 @@ const UsersPage = () => {
             </TableRow>
           )) : (<TableShimmer columns={6} endAction />)}
         </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={6} align="right">
-              <FormControlLabel
-                control={(
-                  <Switch
-                    value={temporary}
-                    onChange={(e) => setTemporary(e.target.checked)}
-                    size="small"
-                  />
-                )}
-                label={t('userTemporary')}
-                labelPlacement="start"
-              />
-            </TableCell>
-          </TableRow>
-        </TableFooter>
       </Table>
       <CollectionFab editPath="/settings/user" />
     </PageLayout>

@@ -3,9 +3,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   Toolbar, IconButton, OutlinedInput, Popover, ListItemButton, ListItemText, Tooltip,
+  Divider,
 } from '@mui/material';
 import { makeStyles, useTheme } from '@mui/styles';
 import MapIcon from '@mui/icons-material/Map';
+import BottomMenu from '../common/components/BottomMenu';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import AddIcon from '@mui/icons-material/Add';
 import { useTranslation } from '../common/components/LocalizationProvider';
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     display: 'flex',
     gap: theme.spacing(1),
+    overflow:'scroll',
   },
   filterPanel: {
     borderRadius:'30px',
@@ -25,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     gap: theme.spacing(2),
     width: theme.dimensions.drawerWidthTablet,
   },
+  OutlinedInput:{
+    width:'75%',
+  },
+  footer:{
+    width:'100%',
+  }
 }));
 
 const MainToolbar = ({
@@ -55,7 +64,8 @@ const MainToolbar = ({
       <IconButton edge="start" onClick={() => setDevicesOpen(!devicesOpen)}>
         {devicesOpen ? <MapIcon/> : <ViewListIcon />}
       </IconButton>
-      <OutlinedInput
+      <OutlinedInput 
+      className={classes.OutlinedInput}
         ref={inputRef}
         placeholder={t('sharedSearchDevices')}
         value={keyword}
@@ -95,7 +105,11 @@ const MainToolbar = ({
           </ListItemButton>
         )}
       </Popover>
-      
+      <Divider>|||||||</Divider>
+      <div className={classes.footer}>
+        <BottomMenu></BottomMenu>
+      </div>
+      <Divider>|||||||</Divider>
       <IconButton edge="end" onClick={() => navigate('/settings/device')} disabled={deviceReadonly}>
         <Tooltip open={!deviceReadonly && Object.keys(devices).length === 0} title={t('deviceRegisterFirst')} arrow>
           <AddIcon />
