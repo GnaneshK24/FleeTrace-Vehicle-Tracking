@@ -18,7 +18,6 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AddAttributeDialog from './AddAttributeDialog';
 import { useTranslation } from '../../common/components/LocalizationProvider';
 import { useAttributePreference } from '../../common/util/preferences';
 import {
@@ -204,11 +203,6 @@ const EditAttributesAccordion = ({ attribute, attributes, setAttributes, definit
         >
           {t('sharedAdd')}
         </Button>
-        <AddAttributeDialog
-          open={addDialogShown}
-          onResult={handleAddResult}
-          definitions={definitions}
-        />
       </AccordionDetails>
     </Accordion>
   );

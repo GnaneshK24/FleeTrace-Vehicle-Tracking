@@ -2,6 +2,7 @@ import React, {
   useState, useCallback, useEffect,
 } from 'react';
 import { Paper } from '@mui/material';
+import { grey, green, indigo, blue } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -11,7 +12,6 @@ import BottomMenu from '../common/components/BottomMenu';
 import StatusCard from '../common/components/StatusCard';
 import { devicesActions } from '../store';
 import usePersistedState from '../common/util/usePersistedState';
-import EventsDrawer from './EventsDrawer';
 import useFilter from './useFilter';
 import MainToolbar from './MainToolbar';
 import MainMap from './MainMap';
@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
   middle: {
     flex: 1,
     display: 'grid',
+    cursor:'-moz-grab'
     
   },
   contentMap: {
@@ -157,7 +158,6 @@ const MainPage = () => {
 
       </div>
       </Draggable>
-      <EventsDrawer open={eventsOpen} onClose={() => setEventsOpen(false)} />
       {selectedDeviceId && (
         <StatusCard
           deviceId={selectedDeviceId}

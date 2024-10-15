@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     pointerEvents: 'auto',
     width: theme.dimensions.popupMaxWidth,
-    borderRadius:'20px',
+    borderRadius:'30px',
   },
   media: {
     height: theme.dimensions.popupImageHeight,
@@ -226,12 +226,6 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                 </CardContent>
               )}
               <CardActions classes={{ root: classes.actions }} disableSpacing>
-                <IconButton
-                  onClick={() => navigate('/replay')}
-                  disabled={disableActions || !position}
-                >
-                  <ReplayIcon />
-                </IconButton>
                 <IconButton
                   onClick={() => navigate(`/settings/device/${deviceId}`)}
                   disabled={disableActions || deviceReadonly}

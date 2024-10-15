@@ -24,8 +24,6 @@ import { useAttributePreference, usePreference } from '../util/preferences';
 import { useTranslation } from './LocalizationProvider';
 import { useDeviceReadonly } from '../util/permissions';
 import AddressValue from './AddressValue';
-import GeofencesValue from './GeofencesValue';
-import DriverValue from './DriverValue';
 
 const PositionValue = ({ position, property, attribute }) => {
   const t = useTranslation();
@@ -112,16 +110,6 @@ const PositionValue = ({ position, property, attribute }) => {
     case 'network':
       if (value) {
         return <Link component={RouterLink} underline="none" to={`/network/${position.id}`}>{t('sharedInfoTitle')}</Link>;
-      }
-      return '';
-    case 'geofenceIds':
-      if (value) {
-        return <GeofencesValue geofenceIds={value} />;
-      }
-      return '';
-    case 'driverUniqueId':
-      if (value) {
-        return <DriverValue driverUniqueId={value} />;
       }
       return '';
     default:

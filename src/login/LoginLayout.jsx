@@ -3,38 +3,43 @@ import { useMediaQuery, Paper } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTheme } from '@mui/material/styles';
 import LogoImage from './LogoImage';
+import { grey, green, indigo, blue } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     height: '100%',
+    background:indigo[200],
   },
   sidebar: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: theme.palette.primary.main,
+    background:indigo[300],
     paddingBottom: theme.spacing(5),
-    width:'50%',
+    width:'40%',
+    paddingLeft:'30px',
     
     
   },
   paper: {
+    background:indigo[200],
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
+    flex: 2,
     boxShadow: '-2px 0px 16px rgba(0, 0, 0, 0.25)',
-    [theme.breakpoints.up('lg')]: {
-      padding: theme.spacing(0, 25, 0, 0),
-    },
+    paddingRight:'50px',
+    
+    
   },
   form: {
     maxWidth: theme.spacing(52),
-    padding: theme.spacing(5),
+    padding: '50px',
     width: '100%',
-    marginLeft:'100px'
+    marginLeft:'10px',
+    marginBottom:'200px'
   },
 }));
 
@@ -44,14 +49,14 @@ const LoginLayout = ({ children }) => {
 
   return (
     <main className={classes.root}>
-      <div className={classes.sidebar}>
-        {!useMediaQuery(theme.breakpoints.down('lg')) && <LogoImage color={theme.palette.secondary.contrastText} />}
-      </div>
       <Paper className={classes.paper}>
         <form className={classes.form}>
           {children}
         </form>
       </Paper>
+      <div className={classes.sidebar}>
+        {!useMediaQuery(theme.breakpoints.down('lg')) && <LogoImage color={theme.palette.secondary.contrastText} />}
+      </div>
     </main>
   );
 };

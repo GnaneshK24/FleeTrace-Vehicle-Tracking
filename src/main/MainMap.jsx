@@ -9,12 +9,10 @@ import MapCurrentLocation from '../map/MapCurrentLocation';
 import PoiMap from '../map/main/PoiMap';
 import MapPadding from '../map/MapPadding';
 import { devicesActions } from '../store';
-import MapDefaultCamera from '../map/main/MapDefaultCamera';
 import MapLiveRoutes from '../map/main/MapLiveRoutes';
 import MapPositions from '../map/MapPositions';
 import MapOverlay from '../map/overlay/MapOverlay';
 import MapScale from '../map/MapScale';
-import useFeatures from '../common/util/useFeatures';
 
 const MainMap = ({ filteredPositions, selectedPosition, onEventsClick }) => {
   const theme = useTheme();
@@ -41,7 +39,6 @@ const MainMap = ({ filteredPositions, selectedPosition, onEventsClick }) => {
           selectedPosition={selectedPosition}
           showStatus
         />
-        <MapDefaultCamera />
         <MapSelectedDevice />
         <PoiMap />
       </MapView>

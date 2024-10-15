@@ -6,7 +6,6 @@ import { devicesActions, sessionActions } from './store';
 import { useEffectAsync } from './reactHelper';
 import { useTranslation } from './common/components/LocalizationProvider';
 import { snackBarDurationLongMs } from './common/util/duration';
-import alarm from './resources/alarm.mp3';
 import { eventsActions } from './store/events';
 import useFeatures from './common/util/useFeatures';
 import { useAttributePreference } from './common/util/preferences';

@@ -12,8 +12,6 @@ import { useTranslation } from '../common/components/LocalizationProvider';
 import SettingsMenu from './components/SettingsMenu';
 import { useCatch } from '../reactHelper';
 import useQuery from '../common/util/useQuery';
-import { useDispatch, useSelector } from 'react-redux';
-import makeStyles from '@mui/styles/makeStyles';
 import useSettingsStyles from './common/useSettingsStyles';
 
 const DevicePage = () => {

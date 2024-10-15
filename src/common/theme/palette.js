@@ -14,7 +14,7 @@ export default (server, darkMode) => ({
     main: validatedColor(server?.attributes?.colorSecondary) || (darkMode ? indigo[300] : green[800]),
   },
   neutral: {
-    main: grey[500],
+    main: grey[100],
   },
   geometry: {
     main: '#3bb2d0',
